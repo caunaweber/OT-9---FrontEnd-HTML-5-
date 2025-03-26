@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.produto {
+    border: 1px solid #0a0606;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.produto img {
+    max-width: 100%;
+    height: auto;
+}

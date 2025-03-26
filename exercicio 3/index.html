@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Loja de Produtos Virtuais</h1>
+    </header>
+
+    <section class="filter-options">
+
+        <label for="filtro">Filtrar por preço:</label>
+        <select id="filtro">
+            <option value="todos">Todos</option>
+            <option value="barato">Até R$ 50</option>
+            <option value="medio">R$ 50 - R$ 100</option>
+            <option value="caro">Acima de R$ 100</option>
+        </select>
+
+    </section>
+
+    <section class="container">
+
+        <div class="produto" data-categoria="barato">
+            <p>Produto 1</p>
+            <img src="img1.png" alt="produto 1">
+            <p>Preço: R$ 50,00</p>
+            <button type="button">Comprar</button>
+        </div>
+
+        <div class="produto" data-categoria="medio">
+            <p>Produto 2</p>
+            <img src="img1.png" alt="produto 2">
+            <p>Preço: R$ 80,00</p>
+            <button type="button">Comprar</button>
+        </div>
+
+        <div class="produto" data-categoria="caro">
+            <p>Produto 3</p>
+            <img src="img1.png" alt="produto 3">
+            <p>Preço: R$ 120,00</p>
+            <button type="button">Comprar</button>
+        </div>
+
+    </section>
+
+    <script>
+        document.getElementById("filtro").addEventListener("change", function() {
+            let categoria = this.value;
+            let produtos = document.querySelectorAll(".produto");
+            
+            produtos.forEach(produto => {
+                if (categoria === "todos" || produto.dataset.categoria === categoria) {
+                    produto.style.display = "block";
+                } else {
+                    produto.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

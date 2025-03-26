@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Música</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <p>Artistas</p>
+        <p>Álbuns</p>
+        <p>Músicas</p>
+        <p>Playlists</p>
+    </div>
+
+    <header>
+        <h1>Meu App de Música</h1>
+        <input type="text" class="search-bar" placeholder="Buscar...">
+    </header>
+
+    <div class="content">
+        <div class="card" onclick="playMusic('audio1', 'Música 1')"><p>Música 1</p> 
+            <img src="img.png" alt=""></div>
+        <div class="card" onclick="playMusic('audio1', 'Música 2')"><p>Música 2</p>
+        <img src="img.png" alt=""></div>
+        <div class="card" onclick="playMusic('audio1', 'Música 3')"><p>Música 3</p>
+        <img src="img.png" alt=""></div>
+        <div class="card" onclick="playMusic('audio1', 'Música 4')"><p>Música 4</p>
+        <img src="img.png" alt=""></div>
+        <div class="card" onclick="playMusic('audio1', 'Música 5')"><p>Música 5</p>
+        <img src="img.png" alt=""></div>
+        <div class="card" onclick="playMusic('audio1', 'Música 6')"><p>Música 6</p>
+        <img src="img.png" alt=""></div>
+        <audio id="audio1" src="musica.mp3"></audio>
+    </div>
+
+    <div class="player">
+        <span id="now-playing">▶ Tocando: Nenhuma</span>
+        <div class="controls">
+            <button onclick="playPause()">⏯</button>
+            <input type="range" min="0" max="100" title="Volume" onchange="setVolume(this.value)">
+        </div>
+    </div>
+
+    <script>
+
+        let currentAudio = null;
+
+        function playMusic(id, name) {
+
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            currentAudio = document.getElementById(id);
+            currentAudio.play();
+            document.getElementById('now-playing').innerText = `▶ Tocando: ${name}`;
+        }
+
+        function togglePlayPause() {
+
+            if (currentAudio) {
+
+                if (currentAudio.paused) {
+
+                    currentAudio.play();
+                } else {
+
+                    currentAudio.pause();
+                }
+            }
+        }
+
+        function setVolume(value) {
+            if (currentAudio) {
+                currentAudio.volume = value / 100;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
